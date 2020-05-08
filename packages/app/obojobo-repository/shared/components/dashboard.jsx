@@ -89,9 +89,13 @@ const getSortMethod = sortOrder => {
 	return sortFn
 }
 
-const renderModules = (modules, sortOrder) => {
+const renderModules = (modules, sortOrder, props) => {
 	const sortFn = getSortMethod(sortOrder)
-	return modules.sort(sortFn).map(draft => <Module key={draft.draftId} hasMenu={true} {...draft} />)
+	return modules
+		.sort(sortFn)
+		.map(draft => (
+			<Module key={draft.draftId} linkToSelf={props.linkToSelf} hasMenu={true} {...draft} />
+		))
 }
 
 const Dashboard = props => {
@@ -145,7 +149,8 @@ const Dashboard = props => {
 								<div className="repository--item-list--collection--item--multi-wrapper">
 									{renderModules(
 										props.filteredModules ? props.filteredModules : props.myModules,
-										sortOrder
+										sortOrder,
+										props
 									)}
 								</div>
 							</div>

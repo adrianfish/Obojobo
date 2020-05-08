@@ -30,7 +30,8 @@ router
 				currentUser: req.currentUser,
 				// must use webpackAssetPath for all webpack assets to work in dev and production!
 				appCSSUrl: webpackAssetPath('dashboard.css'),
-				appJsUrl: webpackAssetPath('dashboard.js')
+				appJsUrl: webpackAssetPath('dashboard.js'),
+				linkToSelf: req.session.linkToSelf
 			}
 			res.render('pages/page-dashboard-server.jsx', props)
 		})

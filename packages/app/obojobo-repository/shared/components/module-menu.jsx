@@ -17,7 +17,10 @@ const ModuleMenu = props => {
 	return (
 		<div className="repository--module-icon--menu-wrapper">
 			<div className={`repository--module-icon--menu ${props.className || ''}`}>
-				<ButtonLink url={`/preview/${props.draftId}`} target="_blank">
+				<ButtonLink
+					url={`/preview/${props.draftId}`}
+					target={props.linkToSelf && props.linkToSelf !== 'false' ? '_self' : '_blank'}
+				>
 					Preview
 				</ButtonLink>
 				<ButtonLink url={urlForEditor(props.editor, props.draftId)} target="_blank">

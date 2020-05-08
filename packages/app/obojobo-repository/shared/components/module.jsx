@@ -47,7 +47,12 @@ const Module = props => {
 				</a>
 			)}
 			{isMenuOpen ? (
-				<ModuleMenu draftId={props.draftId} editor={props.editor} title={props.title} />
+				<ModuleMenu
+					draftId={props.draftId}
+					editor={props.editor}
+					title={props.title}
+					linkToSelf={props.linkToSelf}
+				/>
 			) : null}
 			{props.children}
 		</div>

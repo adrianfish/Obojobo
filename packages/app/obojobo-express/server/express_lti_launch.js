@@ -116,6 +116,16 @@ const userFromLaunch = (req, ltiBody) => {
 		.then(() => newUser)
 }
 
+const addViewProperties = (req, lti) => {
+	const linkToSelfParam = config.lti.linkToSelfParam
+	req.session.linkToSelf = lti.body[linkToSelfParam]
+	return Promise.resolve({
+		then: function(resolve) {
+			resolve(lti)
+		}
+	})
+}
+
 // LTI launch detection (req.lti is created by express-ims-lti)
 // This middleware will create and register a user if there is one
 // This will also try to register the launch information if there is any
@@ -161,6 +171,7 @@ exports.courseNavlaunch = (req, res, next) => {
 	}
 
 	return Promise.resolve(req.lti)
+		.then(lti => addViewProperties(req, lti))
 		.then(lti => userFromLaunch(req, lti.body))
 		.then(() => next())
 		.catch(error => {

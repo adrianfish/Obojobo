@@ -3,16 +3,19 @@
 		"keys":{
 			"testkey": "testsecret"
 		},
-		"usernameParam": "lis_person_sourcedid"
+		"usernameParam": "lis_person_sourcedid",
+		"linkToSelfParam": "custom_link_to_self"
 	},
 	"test": {
 		"keys":{
 			"jesttestkey":"jesttestsecret"
 		},
-		"usernameParam": "lis_person_sourcedid"
+		"usernameParam": "lis_person_sourcedid",
+		"linkToSelfParam": "custom_link_to_self"
 	},
 	"production":{
 		"keys": {"ENV": "OBO_LTI_KEYS_JSON"},
-		"usernameParam": {"ENV": "OBO_LTI_USERNAME_PARAM"}
+		"usernameParam": {"ENV": "OBO_LTI_USERNAME_PARAM"},
+		"linkToSelfParam": "custom_link_to_self"
 	}
 }
